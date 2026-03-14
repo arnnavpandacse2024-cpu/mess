@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>University Hostel Mess Token Management System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-pZ+Y2fH5iE+0Zm/6RkF0og5tyDrT+jcPSPqg5E3Xr8q2+Qw3YbF1kV8bBfA3uX3Yf65eRVM7v+y7+7Bbw+n89A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <p class="tag">University Hostel Mess</p>
+        <h1>Token Management System</h1>
+      </div>
+      <div class="header-actions">
+        <button class="mode-btn" id="themeBtn"><i class="fa-regular fa-moon"></i> Dark Mode</button>
+        <div class="countdown"><i class="fa-regular fa-clock"></i> Booking closes in <span id="countdown">--:--:--</span></div>
+      </div>
+    </header>
+
+    <section class="intro card card-grid">
+      <div class="intro-left">
+        <h2>Book your mess token in seconds</h2>
+        <p>Choose your day, meal timing and food type. The system supports only Tuesday, Wednesday, Thursday, Friday and Sunday.</p>
+      </div>
+      <div class="intro-right">
+        <div class="metric"><i class="fa-solid fa-utensils"></i> Veg & Non-Veg</div>
+        <div class="metric"><i class="fa-solid fa-calendar-check"></i> 5 Days Open</div>
+        <div class="metric"><i class="fa-solid fa-mobile-screen-button"></i> Mobile Friendly</div>
+      </div>
+    </section>
+
+    <section class="availability card">
+      <div class="availability-head">
+        <h3><i class="fa-solid fa-info-circle"></i> Weekly Availability</h3>
+        <p id="availabilityText"></p>
+      </div>
+      <div class="days-wrap" id="daysWrap"></div>
+    </section>
+
+    <section class="menu card">
+      <div class="section-title"><i class="fa-solid fa-list"></i> Weekly Mess Menu</div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <section class="booking card">
+      <div class="section-title"><i class="fa-solid fa-clipboard-list"></i> Student Token Booking</div>
+      <form id="tokenForm" class="form-grid">
+        <div class="form-row"><label for="studentName">Student Name</label><input id="studentName" name="studentName" maxlength="50" required /></div>
+        <div class="form-row"><label for="rollNumber">Roll Number</label><input id="rollNumber" name="rollNumber" required /></div>
+        <div class="form-row"><label for="roomNumber">Room Number</label><input id="roomNumber" name="roomNumber" required /></div>
+        <div class="form-row"><label for="hostelName">Hostel Name</label><select id="hostelName" name="hostelName" required><option value="">Select Hostel</option><option>Vijay Block</option><option>Shanti Block</option><option>Indira Block</option><option>Gandhi Block</option></select></div>
+        <div class="form-row"><label for="selectDay">Select Day</label><select id="selectDay" name="selectDay" required><option value="">Choose Day</option><option>Sunday</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select></div>
+        <div class="form-row"><label for="mealTime">Meal Time</label><select id="mealTime" name="mealTime" required><option value="">Choose Meal Time</option><option>Afternoon Meal</option><option>Night Meal</option></select></div>
+        <div class="form-row"><label for="foodType">Food Type</label><select id="foodType" name="foodType" required><option value="">Choose Food Type</option><option>Veg</option><option>Non-Veg</option></select></div>
+        <div class="full-row">
+          <button type="submit" class="btn-primary">Submit Token</button>
+          <p class="hint">Your confirmation message will be simulated in-app.</p>
+        </div>
+      </form>
+      <div id="formMessage" class="message"></div>
+    </section>
+
+    <section class="admin card">
+      <div class="section-title"><i class="fa-solid fa-user-shield"></i> Admin Panel</div>
+      <div class="admin-controls">
+        <div><label>Filter Day</label><select id="filterDay"><option value="all">All</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Sunday</option></select></div>
+        <div><label>Filter Food</label><select id="filterFood"><option value="all">All</option><option>Veg</option><option>Non-Veg</option></select></div>
+        <button id="exportBtn" class="btn-secondary">Export CSV</button>
+      </div>
+      <div class="admin-summary"><strong>Total Bookings:</strong> <span id="totalCount">0</span> | <strong>Veg:</strong> <span id="vegCount">0</span> | <strong>Non-Veg:</strong> <span id="nonVegCount">0</span></div>
+      <div class="table-wrap"><table id="bookingTable"><thead><tr><th>Token ID</th><th>Name</th><th>Roll</th><th>Hostel</th><th>Day</th><th>Meal</th><th>Food</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast"><div class="toast-content"><i class="fa-solid fa-circle-check"></i> <span id="toastText"></span></div></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
